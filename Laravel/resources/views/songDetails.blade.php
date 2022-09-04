@@ -1,5 +1,11 @@
 @extends('layouts.layout')
 
+@section('title')
+
+<title>Nummer details</title>
+
+@endsection
+
 @section('content')
 <p>Song details:</p>
 <ul>
