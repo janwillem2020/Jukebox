@@ -9,12 +9,15 @@
 @section('content')
 
 <p>Genres:</p>
-<ul>
+<ul style="list-style-type: '- '">
 @foreach($data as $i)
 <li><a href="songs/{{$i->id}}">{{$i->name}}</a></li>
 @endforeach
 </ul>
 
-<a href="/playlist">Afspeellijst</a>
+<div>
+    <a href="/playlist">Tijdelijke Afspeellijst</a>
+    <a href="/">Opgeslagen afspeellijsten</a>
+</div>
 
 @endsection

@@ -8,7 +8,7 @@
 
 @section('content')
 <p>Nummers:</p>
-<ul>
+<ul style="list-style-type: '- '">
 @foreach($songData as $i)
 <li><a href="/songDetails/{{$i->id}}">{{$i->name}}</a></li>
 @endforeach
