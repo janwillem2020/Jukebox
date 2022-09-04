@@ -7,7 +7,7 @@
 @endsection
 
 @section('content')
-<p>Song details:</p>
+<p>Nummer details:</p>
 <ul>
 @foreach($songData as $i)
 <li>
