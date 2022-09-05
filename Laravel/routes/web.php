@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 use App\Http\Controllers\Genres;
 use App\Http\Controllers\Songs;
 use App\Http\Controllers\Playlists;
@@ -16,6 +17,15 @@ use App\Http\Controllers\Playlists;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
 
 Route::get('/', [Genres::class,"showGenre"]);
 
