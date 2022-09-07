@@ -40,3 +40,9 @@ Route::get('/savePlaylist', [Playlists::class, "savePlaylist"]);
 Route::get('/savedPlaylists', [Playlists::class, "showSavedPlaylist"]);
 
 Route::get('/deletePlaylist/{id}', [Playlists::class, "deletePlaylist"]);
+
+Route::get('/showChangePlaylistName/{playlist_id}', [Playlists::class, "showChangePlaylistName"]);
+
+Route::post('/changePlaylistName/{playlist_id}', [Playlists::class, "changePlaylistName"]);
+
+Route::get('/savedPlaylistSongs/{playlist_id}', [Playlists::class, "showSavedPlaylistSongs"]);

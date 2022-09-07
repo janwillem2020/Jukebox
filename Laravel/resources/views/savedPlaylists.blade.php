@@ -14,8 +14,9 @@
     <div style="border: solid black 1px; margin: 5px; padding: 5px; display: flex; flex-direction: column;">
         <a>Afspeellijst naam: {{$currentPlaylist->name}}</a>
         <div>
-            <a href="/changeNamePlaylist/{{$currentPlaylist->id}}">Naam veranderen</a>
+            <a href="/showChangePlaylistName/{{$currentPlaylist->id}}">Naam veranderen</a>
             <a href="/deletePlaylist/{{$currentPlaylist->id}}">Afspeellijst verwijderen</a>
+            <a href="/savedPlaylistSongs">Nummer overzicht</a>
         </div>
     </div>
 @endforeach

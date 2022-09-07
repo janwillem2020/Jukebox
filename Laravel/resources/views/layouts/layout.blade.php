@@ -19,7 +19,9 @@
 <nav>
     <a href="/">Terug naar home</a>
     <a href="/playlist">Tijdelijke Afspeellijst</a>
+    @guest
     <a href="/login">Inloggen</a>
+    @endguest
     @auth
         <a href="/savedPlaylists">Opgeslagen afspeellijsten</a>
         <a href="/dashboard">Dashboard</a>

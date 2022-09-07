@@ -68,6 +68,20 @@ class Playlists extends Controller
         return redirect("savedPlaylists");
     }
 
+    function showChangePlaylistName($playlist_id) {
+        $selectedPlaylist = SavedPlaylist::where("id", $playlist_id)->first();
+
+        return view("changePlaylistName", ["selectedPlaylist" => $selectedPlaylist]);
+    }
+
+    function changePlaylistName(Request $request, $playlist_id) {
+        $selectedPlaylist = SavedPlaylist::where("id", $playlist_id)->first();
+        $selectedPlaylist->name = $request->input;
+        $selectedPlaylist->save();
+
+        return redirect("savedPlaylists");
+    }
+
     function calculateDuration($playlist){
         $totalDuration = "00:00:00";
 
