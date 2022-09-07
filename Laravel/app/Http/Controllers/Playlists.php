@@ -42,6 +42,19 @@ class Playlists extends Controller
         return redirect('playlist');
     }
 
+    function savePlaylist(Request $request) {
+        $playlist = $request->session()->get("playlist");
+
+        if (Auth::check() && isset($playlist)) {
+            $savedPlaylist = SavedPlaylist::create([
+                "user_id" => Auth::user()->id,
+                "name" => "savedPlaylist"
+            ]);
+
+            
+        }
+    }
+
     public function calculateDuration($playlist){
         $totalDuration = "00:00:00";
 

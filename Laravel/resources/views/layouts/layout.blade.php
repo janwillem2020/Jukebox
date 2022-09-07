@@ -18,6 +18,12 @@
 
 <nav>
     <a href="/">Terug naar home</a>
+    <a href="/playlist">Tijdelijke Afspeellijst</a>
+    <a href="/login">Inloggen</a>
+    @auth
+        <a href="/savedPlaylists">Opgeslagen afspeellijsten</a>
+        <a href="/dashboard">Dashboard</a>
+    @endauth
 </nav>
 
 <h1>Jukebox</h1>

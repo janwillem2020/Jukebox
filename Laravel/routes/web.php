@@ -17,10 +17,6 @@ use App\Http\Controllers\Playlists;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -31,10 +27,12 @@ Route::get('/', [Genres::class,"showGenre"]);
 
 Route::get('/songs/{id}', [Songs::class,"showGenreSongs"]);
 
-Route::get('/playlist', [Playlists::class,"showPlaylist"]);
-
 Route::get('/songDetails/{id}', [Songs::class,"showSongDetails"]);
+
+Route::get('/playlist', [Playlists::class,"showPlaylist"]);
 
 Route::get('/addToPlaylist/{id}', [Playlists::class,"addSongToPlaylist"]);
 
 Route::get('/removeFromPlaylist/{song_index}', [Playlists::class, "removeFromPlaylist"]);
+
+Route::get('/savePlaylist', [Playlists::class, "savePlaylist"]);
