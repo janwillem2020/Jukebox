@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Song;
+use App\Models\SavedPlaylist;
 
 class Playlists extends Controller
 {
@@ -48,14 +50,25 @@ class Playlists extends Controller
         if (Auth::check() && isset($playlist)) {
             $savedPlaylist = SavedPlaylist::create([
                 "user_id" => Auth::user()->id,
-                "name" => "savedPlaylist"
+                "name" => "Opgeslagen Afspeellijst"
             ]);
-
-            
         }
+        return redirect("savedPlaylists");
     }
 
-    public function calculateDuration($playlist){
+    function showSavedPlaylist(){
+        $savedPlaylists = SavedPlaylist::where("user_id", Auth::user()->id)->get();
+ 
+        return view("savedPlaylists", ["savedPlaylists" => $savedPlaylists]);
+    }
+
+    function deletePlaylist($playlist_id){
+        SavedPlaylist::where("id", $playlist_id)->delete();
+
+        return redirect("savedPlaylists");
+    }
+
+    function calculateDuration($playlist){
         $totalDuration = "00:00:00";
 
         if(isset($playlist)){

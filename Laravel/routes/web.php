@@ -36,3 +36,7 @@ Route::get('/addToPlaylist/{id}', [Playlists::class,"addSongToPlaylist"]);
 Route::get('/removeFromPlaylist/{song_index}', [Playlists::class, "removeFromPlaylist"]);
 
 Route::get('/savePlaylist', [Playlists::class, "savePlaylist"]);
+
+Route::get('/savedPlaylists', [Playlists::class, "showSavedPlaylist"]);
+
+Route::get('/deletePlaylist/{id}', [Playlists::class, "deletePlaylist"]);
