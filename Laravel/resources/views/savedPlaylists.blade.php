@@ -16,7 +16,7 @@
         <div>
             <a href="/showChangePlaylistName/{{$currentPlaylist->id}}">Naam veranderen</a>
             <a href="/deletePlaylist/{{$currentPlaylist->id}}">Afspeellijst verwijderen</a>
-            <a href="/savedPlaylistSongs">Nummer overzicht</a>
+            <a href="/savedPlaylistSongs/{{$currentPlaylist->id}}">Nummer overzicht</a>
         </div>
     </div>
 @endforeach

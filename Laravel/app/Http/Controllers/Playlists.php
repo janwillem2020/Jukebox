@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Models\Song;
 use App\Models\SavedPlaylist;
+use App\Models\SavedPlaylistSong;
 
 class Playlists extends Controller
 {
@@ -53,6 +54,13 @@ class Playlists extends Controller
                 "name" => "Opgeslagen Afspeellijst"
             ]);
         }
+
+        foreach($playlist as $song) {
+            SavedPlaylistSong::create([
+                "saved_playlist_id" => $savedPlaylist->id,
+                "song_id" => $song->id
+            ]);
+        }
         return redirect("savedPlaylists");
     }
 
@@ -80,6 +88,17 @@ class Playlists extends Controller
         $selectedPlaylist->save();
 
         return redirect("savedPlaylists");
+    }
+
+    function showSavedPlaylistSongs($playlist_id) {
+        $savedPlaylist = SavedPlaylist::find($playlist_id);
+        $savedPlaylistSongs = SavedPlaylistSong::where("saved_playlist_id", $playlist_id)->get();
+        $allSongs = [];
+        foreach($savedPlaylistSongs as $value) {
+            array_push($allSongs, Song::find($value->song_id));
+        }
+        
+        return view("savedPlaylistSongs", ["allSongs" => $allSongs, "savedPlaylist" => $savedPlaylist]);
     }
 
     function calculateDuration($playlist){

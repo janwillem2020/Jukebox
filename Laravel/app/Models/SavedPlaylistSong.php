@@ -12,4 +12,5 @@ class SavedPlaylistSong extends Model
     protected $fillable = ["saved_playlist_id", "song_id"];
 
     public $timestamps = false;
+    public $table = "saved_playlist_songs";
 }
