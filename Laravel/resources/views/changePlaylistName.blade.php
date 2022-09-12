@@ -12,7 +12,7 @@
 
 <form method="post" action="/changePlaylistName/{{$selectedPlaylist->id}}">
     @csrf
-    <input name="input" value="{{$selectedPlaylist->name}}" type="text">
+    <input name="input" autocomplete="off" value="{{$selectedPlaylist->name}}" type="text">
     <input value="Opslaan" type="submit">
 </form>
 @endsection
