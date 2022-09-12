@@ -104,7 +104,7 @@ class Playlists extends Controller
 
     function removeSongFromSavedPlaylist($playlist_id, $song_id) {
         $savedPlaylist = SavedPlaylist::find($playlist_id);
-        $savedPlaylistSong = SavedPlaylistSong::where("saved_playlist_id", $playlist_id)->where("song_id", $song_id)->delete();
+        $savedPlaylistSong = SavedPlaylistSong::where("saved_playlist_id", $playlist_id)->where("song_id", $song_id)->limit(1)->delete();
 
         return redirect("savedPlaylistSongs/{$playlist_id}");
     }
