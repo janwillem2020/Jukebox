@@ -14,9 +14,8 @@
         <li>Naam: {{$i->name}}</li>
         <li>Artiest: {{$i->artist}}</li>
         <li>Duur: {{$i->duration}}</li>
-        <li>Gecreërd op: {{$i->created_at}}</li>
         <li><a href="/addToPlaylist/{{$i->id}}">Toevoegen aan tijdelijke playlist</a></li>
-        <li><a href="/addToPlaylist/{{$i->id}}">Toevoegen aan tijdelijke playlist</a></li>
+        <li><a href="/choosePlaylist/{{$i->id}}">Toevoegen aan bestaande playlist</a></li>
     </ul>
 </div>
 @endforeach

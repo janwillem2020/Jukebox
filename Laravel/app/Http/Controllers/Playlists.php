@@ -94,6 +94,7 @@ class Playlists extends Controller
         $savedPlaylist = SavedPlaylist::find($playlist_id);
         $savedPlaylistSongs = SavedPlaylistSong::where("saved_playlist_id", $playlist_id)->get();
         $allSongs = [];
+        
         foreach($savedPlaylistSongs as $value) {
             array_push($allSongs, Song::find($value->song_id));
         }
@@ -105,7 +106,18 @@ class Playlists extends Controller
         $savedPlaylist = SavedPlaylist::find($playlist_id);
         $savedPlaylistSong = SavedPlaylistSong::where("saved_playlist_id", $playlist_id)->where("song_id", $song_id)->delete();
 
-        // dd($savedPlaylist, $savedPlaylistSong);
+        return redirect("savedPlaylistSongs/{$playlist_id}");
+    }
+
+    function choosePlaylist($song_id) {
+        $savedPlaylists = SavedPlaylist::where("user_id", Auth::user()->id)->get();
+
+        return view("choosePlaylist", ["savedPlaylists" => $savedPlaylists, "song_id" => $song_id]);
+    }
+
+    function addSongToSavedPlaylist($playlist_id, $song_id) {
+        SavedPlaylistSong::create(["saved_playlist_id" => $playlist_id, "song_id" => $song_id]);
+
         return redirect("savedPlaylistSongs/{$playlist_id}");
     }
 

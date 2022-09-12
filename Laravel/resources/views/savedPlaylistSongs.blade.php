@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-
 <p>Afspeellijst: {{$savedPlaylist->name}}</p>
 
 @foreach($allSongs as $song)
