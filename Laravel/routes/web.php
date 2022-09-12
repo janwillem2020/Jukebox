@@ -46,3 +46,5 @@ Route::get('/showChangePlaylistName/{playlist_id}', [Playlists::class, "showChan
 Route::post('/changePlaylistName/{playlist_id}', [Playlists::class, "changePlaylistName"]);
 
 Route::get('/savedPlaylistSongs/{playlist_id}', [Playlists::class, "showSavedPlaylistSongs"]);
+
+Route::get('/removeSongFromSavedPlaylist/{playlist_id}/{song_id}', [Playlists::class, "removeSongFromSavedPlaylist"]);

@@ -18,7 +18,7 @@
         <li>Duur: {{$song->duration}}</li>
     </ul>
     <a href="/songDetails/{{$song->id}}">Naar details</a>
-    <a href="/">Verwijderen uit afspeellijst</a>
+    <a href="/removeSongFromSavedPlaylist/{{$savedPlaylist->id}}/{{$song->id}}">Verwijderen uit afspeellijst</a>
 </div>
 @endforeach
 

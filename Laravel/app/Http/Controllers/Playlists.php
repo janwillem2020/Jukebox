@@ -101,6 +101,14 @@ class Playlists extends Controller
         return view("savedPlaylistSongs", ["allSongs" => $allSongs, "savedPlaylist" => $savedPlaylist]);
     }
 
+    function removeSongFromSavedPlaylist($playlist_id, $song_id) {
+        $savedPlaylist = SavedPlaylist::find($playlist_id);
+        $savedPlaylistSong = SavedPlaylistSong::where("saved_playlist_id", $playlist_id)->where("song_id", $song_id)->delete();
+
+        // dd($savedPlaylist, $savedPlaylistSong);
+        return redirect("savedPlaylistSongs/{$playlist_id}");
+    }
+
     function calculateDuration($playlist){
         $totalDuration = "00:00:00";
 
