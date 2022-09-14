@@ -12,6 +12,7 @@ use App\Models\SavedPlaylistSong;
 
 class SessionController extends Controller
 {
+    // Laat de tijdelijke playlist zien
     function showPlaylist(Request $request) {
         $playlist = $request->session()->get('playlist');
 
@@ -19,7 +20,7 @@ class SessionController extends Controller
 
         return view('playlist', ['playlist' => $playlist, 'totalDuration' => $totalDuration]);
     }
-
+    // Voegt nummer toe aan tijdelijke playlist
     function addSongToPlaylist(Request $request, $id) {
         $songData = Song::where("id", $id)->first();
 
@@ -34,7 +35,7 @@ class SessionController extends Controller
 
         return redirect('playlist');
     }
-
+    // Verwijderd nummer uit tijdelijke playlist
     function removeFromPlaylist(Request $request, $song_index) {
         $playlist = $request->session()->get("playlist");
 
@@ -44,7 +45,7 @@ class SessionController extends Controller
 
         return redirect('playlist');
     }
-
+    // Slaat tijdelijke playlist op in de database
     function savePlaylist(Request $request) {
         $playlist = $request->session()->get("playlist");
 
