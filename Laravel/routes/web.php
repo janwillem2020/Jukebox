@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Genres;
 use App\Http\Controllers\Songs;
 use App\Http\Controllers\Playlists;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,13 +30,13 @@ Route::get('/songs/{id}', [Songs::class,"showGenreSongs"]);
 
 Route::get('/songDetails/{id}', [Songs::class,"showSongDetails"]);
 
-Route::get('/playlist', [Playlists::class,"showPlaylist"]);
+Route::get('/playlist', [SessionController::class,"showPlaylist"]);
 
-Route::get('/addToPlaylist/{id}', [Playlists::class,"addSongToPlaylist"]);
+Route::get('/addToPlaylist/{id}', [SessionController::class,"addSongToPlaylist"]);
 
-Route::get('/removeFromPlaylist/{song_index}', [Playlists::class, "removeFromPlaylist"]);
+Route::get('/removeFromPlaylist/{song_index}', [SessionController::class, "removeFromPlaylist"]);
 
-Route::get('/savePlaylist', [Playlists::class, "savePlaylist"]);
+Route::get('/savePlaylist', [SessionController::class, "savePlaylist"]);
 
 Route::get('/savedPlaylists', [Playlists::class, "showSavedPlaylist"]);
 
